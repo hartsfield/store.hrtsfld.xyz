@@ -1,5 +1,6 @@
 {{define "topbar"}}
   <div class="topbar">
+<div class="bgBlur" id="bgBlur" onclick="hideSidebar()"></div>
     <div class="tb-item hamburger" onclick="expandSidebar()">
       <ul>
         <li></li>
@@ -7,7 +8,9 @@
         <li></li>
       </ul>
     </div>
-    <div class="tb-item pageName" id="pageName">{{.PageName}}</div>
+    <div class="tb-item pageName" id="pageName">{{.PageName}}
+    </div>
+      <div class="cartButt" id="cartButt" onclick="toggleCart()"></div>
     {{ if .UserData.IsLoggedIn }}
       <div class="tb-item authButt_" id="authButt_" onclick="auth('logout')">[<div class="redAuth">Logout</div>]</div>
     {{ else }}
@@ -15,6 +18,5 @@
     {{end}}
     <div class="tb-item closeAuth authButt_" id="closeAuth" onclick="hideAuth()">[<div class="redAuth">X</div>]</div>
     <!-- {{ template "auth" . }} -->
-    <div class="cartButt" id="cartButt" onclick="toggleCart()"></div>
   </div>
 {{end}}

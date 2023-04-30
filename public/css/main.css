@@ -42,8 +42,8 @@ li {
 }
 
 .cartButt {
-    /* float: right; */
-    /* margin-right: 1.2em; */
+    float: right;
+    margin-right: 1.2em;
     color: white;
     background: #3eb0ce;
     border-radius: 1em;
@@ -51,7 +51,6 @@ li {
     font-size: 0.9em;
     display: none;
     cursor: pointer;
-    position: fixed;
 }
 
 .cartItem {
@@ -170,7 +169,7 @@ li {
 
 .addToCart {
     background-color: #9abc2e;
-    color: #e9ffc8;
+    color: #fcffc8;
     font-size: 0.8em;
     height: fit-content;
     width: 100%;
@@ -220,11 +219,13 @@ li {
 }
 
 .sidebar {
+        display: inline-flex;
         position: fixed;
         width: 10em;
         height: 100%;
         border-right: 1px solid #dedede;
-        background-color: white;
+        background-color: #ba4e25;
+        color: #ffeaea;
         z-index: 200;
 }
 
@@ -275,17 +276,35 @@ li {
 
 .foot {
         margin-left: 12em;
-        margin-top: 1.5em;
+    margin-top: 1.5em;
+    width: fit-content;
+    background: #9ab03e;
+    color: #fdffae;
+    padding: 0.1em 0.4em 0 0.4em;
+    border-top-right-radius: 0.3em;
+    border-top-left-radius: 0.3em;
+    font-weight: bold;
 }
 
 .navul {
         margin-top: 5em;
+        width: 100%;
+    position: absolute;
 }
 
 .navli {
-        text-align: center;
-        margin-bottom: 0.5em;
-        cursor: pointer;
+        /* text-align: center; */
+        /* margin-bottom: 0.5em; */
+        /* cursor: pointer; */
+        /* border-bottom: 1px solid #bfbfbf; */
+            background: orange;
+    padding: 0.2em 0.9em 0.2em 1.5em;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    color: #7a4e0b;
+    border-right: 0.5em solid white;
+    font-size: 0.8em;
+    float: right;
 }
 
 .pageName {
@@ -317,14 +336,14 @@ li {
         background-color: #d5d5d59e;
 }
 
+
 .topbar {
         font-size: 1.2em; 
         font-weight: bold;
-        background: white;
         position: fixed;
-        width: 100%;
-        border-bottom: 1px solid #bfbfbf;
-        /* background: #dadada; */
+        width: 60vw;
+        max-width: 45em;
+        background: #dadada;
 }
 
 
@@ -388,11 +407,18 @@ li {
             margin-top: 0.7em;
             right: 0.8em;
         }
+        .topbar {
+            min-width: 100%;
+        }
 
         #streamOuter {
     margin-left: 0;
 
         }
+}
+
+#updateDiv {
+    /* display: flex; */
 }
 
 @media screen and (orientation:landscape) {
@@ -418,6 +444,6 @@ li {
                 margin-top: unset;
         }
         .cartButt {
-    left: 44em;
+    /* left: 44em; */
         }
 }
