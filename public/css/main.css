@@ -167,7 +167,8 @@ li {
     white-space: nowrap;
     width: 100%;
     cursor: pointer;
-    color: #60460f;
+    /* color: #60460f; */
+        color: #880993;
 }
 
 .postPrice {
