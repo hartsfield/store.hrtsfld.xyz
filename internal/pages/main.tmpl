@@ -1,0 +1,16 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+        {{template "head"}}                                    
+        <body>
+           <div id="updateDiv">
+                {{template "sidebar" .}}
+                {{template "topbar" .}}
+                {{template "auth" }}
+                <div id="streamOuter">
+                        {{template "stream" .}}
+                </div>
+                {{template "footer" .}}
+           </div>
+        </body>
+</html>
+

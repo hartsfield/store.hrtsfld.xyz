@@ -1,0 +1,402 @@
+* {
+        font-family: sans;
+        margin: 0;
+        padding: 0;
+}
+
+html {
+      overflow-y: scroll;
+}
+
+body {
+        color: #7a7a7a;
+}
+
+li {
+        list-style-type: none;
+}
+
+.postLi {
+        border-top: 1px solid black;
+       padding: 1em; 
+       border-color: #e2e2e2;
+       display: flex;
+       justify-content: space-between;
+}
+
+.companyName {
+        display: inline-block;
+        top: 0;
+        position: absolute;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        cursor: pointer;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #c4c4c4;
+}
+
+#errorField {
+        color: red;
+        font-size: 0.7em;
+}
+
+.cartButt {
+    float: right;
+    margin-right: 1.8em;
+    color: white;
+    background: #3eb0ce;
+    border-radius: 1em;
+    padding: 0.1em 0.6em 0.2em;
+    font-size: 0.9em;
+    display: none;
+    cursor: pointer;
+}
+
+.cartItem {
+        display: flex;
+        padding-bottom: 0.5em;
+}
+
+.cartItemName {
+        display: inline-flex;
+        white-space: nowrap;
+        width: 100%;
+       cursor: pointer;
+}
+
+.cartItemPrice {
+    width: 6em;
+}
+.cartItemPrice, .quantity {
+    display: inline-flex;
+    margin-right: 1em;
+    justify-content: right;
+}
+.removeFromCartButt {
+        display: inline-flex;
+        cursor: pointer;
+}
+
+.cartTotal {
+    margin-top: 1em;
+    background: #a01616;
+    color: white;
+    font-weight: bold;
+    width: fit-content;
+    float: right;
+    border-radius: 0.3em;
+    padding: 0.1em 1em 0.2em;
+    cursor: pointer;
+}
+
+.cartDiv {
+        display: block;
+        padding: 4em 1em 4em 1em;
+}
+
+.authButt {
+        display: inline;
+        margin-right: 1em;
+}
+.tb-item {
+        display: inline;
+        vertical-align: middle;
+}
+.auth {
+        margin-bottom: 1em;
+}
+
+.hiddenAuth {
+        display: none;
+        float: right;
+        margin-right: 1em;
+}
+
+.authButt_ {
+        margin-right: 1em;
+        color: black;
+        float: right;
+        font-weight: 100;
+        margin-top: 0.5em;
+        cursor: pointer;
+        display: none;
+}
+
+.redAuth {
+        color: #b35454;
+        display: inline;
+}
+
+.closeAuth {
+        display: none;
+}
+
+.postImg {
+        display: inline-flex;
+        width: 4em;
+        height: 4em;
+        cursor: pointer;
+}
+
+.postImageBottom, .imgBottom {
+  display: none;
+  width: 100%;
+  height: unset;
+  margin-top: 1em;
+  border-radius: 0.3em;
+}
+
+
+
+.postDescription {
+        display: none;
+}
+
+.postProduct {
+        white-space: nowrap;
+        width: 100%;
+        cursor: pointer;
+}
+
+.postPrice {
+        cursor: pointer;
+        width: 100%;
+        text-align: right;
+        white-space: nowrap;
+            padding: 0 1em;
+}
+
+.addToCart {
+    background-color: #9abc2e;
+    color: #e9ffc8;
+    font-size: 0.8em;
+    height: fit-content;
+    width: 100%;
+    max-width: 6em;
+    white-space: nowrap;
+    text-align: center;
+    padding: 0.1em 0.5em 0.2em 0.5em;
+    border-radius: 0.3em;
+        cursor: pointer;
+ }
+
+.postImg > img {
+    width: 100%;
+    border-radius: 0.3em;
+    /* border-top-right-radius: 0.3em; */
+    /* border-top-left-radius: 0.3em; */
+}
+
+.postInfo {
+        display: inline-flex;
+        padding-left: 1em;
+        width: 100%;
+}
+
+#loginKey_true {
+        background-image: url(../assets/signout.svg);
+        height: 2.4em;
+        width: 2.4em;
+        background-repeat: no-repeat;
+        background-origin: content-box;
+        background-position: center;
+        cursor: pointer;
+        position: fixed;
+        z-index: 500;
+}
+
+#loginKey_false {
+        background-image: url(../assets/key2.svg);
+        height: 2.4em;
+        width: 2.4em;
+        background-repeat: no-repeat;
+        background-origin: content-box;
+        background-position: center;
+        cursor: pointer;
+        position: fixed;
+        z-index: 500;
+}
+
+.sidebar {
+        position: fixed;
+        width: 10em;
+        height: 100%;
+        border-right: 1px solid #dedede;
+        background-color: white;
+        z-index: 200;
+}
+
+.stream {
+        margin-left: 10em;
+        padding-top: 5em;
+}
+
+.stream > ul {
+        padding: 1em;
+        padding-bottom: 0;
+}
+
+.post {
+        border: 1px solid #aaaaaa;
+        margin-bottom: 1em;
+        border-radius: 0.3em;
+        /* padding: 0.5em; */
+        /* padding-left: 0.8em; */
+        /* padding-right: 0.8em; */
+        font-size: 1em;
+        background-color: white;
+}
+
+.likeButt {
+        float: right;
+        height: 3em;
+        width: 3em;
+        margin-top: -0.7em;
+        background-repeat: no-repeat;
+        background-origin: content-box;
+        background-position: center;
+        /* background-size: cover; */
+}
+
+.liked_true {
+        background-image: url(../assets/heart_red.svg);
+}
+
+.liked_false {
+        background-image: url(../assets/heart_black.svg);
+}
+
+.foot {
+        margin-left: 12em;
+        margin-top: 1.5em;
+}
+
+.navul {
+        margin-top: 5em;
+}
+
+.navli {
+        text-align: center;
+        margin-bottom: 0.5em;
+        cursor: pointer;
+}
+
+.pageName {
+        /* font-weight: bold; */
+        /* border-bottom: 1px solid #bfbfbf; */
+        /* padding-bottom: 0.5em; */
+        /* width: 100%; */
+        /* background: white; */
+        /* border-left: 1px solid #d1d1d1; */
+        /* padding-top: 0.5em; */
+        /* font-size: 1.2em; */ 
+}
+
+.hamburger {
+        display: none;
+}
+
+.bgBlur {
+        display: none;
+        z-index: 150;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        -webkit-filter: blur(5px);
+        -moz-filter: blur(5px);
+        -o-filter: blur(5px);
+        -ms-filter: blur(5px);
+        filter: blur(5px);
+        background-color: #d5d5d59e;
+}
+
+.topbar {
+        font-size: 1.2em; 
+        font-weight: bold;
+        background: white;
+        position: fixed;
+        width: 100%;
+        border-bottom: 1px solid #bfbfbf;
+        /* background: #dadada; */
+}
+
+
+
+@media screen and (orientation:portrait) {
+        body {
+                min-width: 100%;
+        }
+
+        .sidebar {
+                display: none;
+        }
+
+        .stream {
+                margin-left: 0;
+                padding-top: 5em;
+        }
+
+        .pageName {
+                padding-left: 3em;
+        }
+
+        .hamburger {
+                display: inline-block;
+                z-index: 100;
+                padding-left: 1em;
+                padding-top: 0.58em;
+                cursor: pointer;
+                background: rgb(185, 97, 0);
+                border-right: 1px solid #d9d9d9;
+                padding-right: 1em;
+                height: 2.3em;
+        }
+
+        .hamburger > ul > li {
+                height: 0.4em;
+                width: 0.4em;
+                margin-bottom: 0.2em;
+                border-radius: 1em;
+        }
+
+        .hamburger > ul > li {
+                /* background-color: #7a7a7a; */
+                background-color: white;
+        }
+        .post {
+                font-size: 1.5vh;
+        }
+
+        .pageName {
+                /* font-size: 2vh; */
+        }
+
+        .authButt_ {
+                margin-top: 0.9em;
+        }
+        .cartButt {
+            margin-top: 0.7em;
+        }
+
+}
+
+@media screen and (orientation:landscape) {
+        body {
+                width: 40%;
+                width: 40%;
+                min-width: 700px;
+                border-right: 1px solid #dedede;
+        }
+        .pageName {
+                padding-left: 11em;
+        }
+        .topbar {
+                font-size: unset;
+                padding-top: 0.5em;
+                padding-bottom: 0.5em;
+        }
+        .authButt_ {
+                margin-top: unset;
+        }
+}

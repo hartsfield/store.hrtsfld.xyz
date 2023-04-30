@@ -1,0 +1,33 @@
+{{define "stream"}}
+  <div class="stream" id="stream">
+    <ul>
+      {{ range $key, $post := .Stream}}
+        <li class="postLi" id="post_{{$post.ID}}">
+          <div class="postImg" id="postImg_{{$post.ID}}" onclick="expando({{$post.ID}})">
+            <img src="{{$post.Image}}" />
+          </div>
+          <div class="postInfo" id="postInfo_{{$post.ID}}">
+            <div class="postProduct" onclick="expando({{$post.ID}})">{{$post.Product}}</div>
+            <div class="postPrice" onclick="expando({{$post.ID}})">{{$post.Price}}</div>
+            <div class="addToCart" id="addToCart_{{$post.ID}}" onclick="addToCart({{$post.ID}})">add to cart</div>
+          </div>
+          <div class="postDescription" id="pd_{{$post.ID}}">{{$post.Description}}</div>
+          <div class="postImgBottom" id="postImgAfter_{{$post.ID}}" onclick="expando({{$post.ID}})">
+            <img id="imgBottom_{{$post.ID}}" class="imgBottom" src="{{$post.Image}}" />
+          </div>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+  <script>
+    stream = {{.Stream}};
+    if (cart.length) {
+      updateCartTotal();
+      setButtons();
+    }
+    if (window.location.hash.substring(2) == "cart") {
+      toggleCart();
+    }
+  </script>
+{{end}}
+
