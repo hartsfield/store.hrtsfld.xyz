@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+        {{template "head"}}                                    
+<link rel="stylesheet" href="../../public/css/checkout.css" />
+<script src="https://js.stripe.com/v3/"></script>
+<script src="../../public/js/checkout.js" defer></script>
+        <body>
+           <div id="updateDiv">
+                {{ template "checkout" . }}
+                {{template "footer" .}}
+           </div>
+        </body>
+</html>
+

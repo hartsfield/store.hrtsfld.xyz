@@ -88,6 +88,11 @@ func nextPage(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+func checkoutView(w http.ResponseWriter, r *http.Request) {
+	p := &pageData{}
+	exeTmpl(w, r, p, "checkoutMeta.tmpl")
+}
+
 func getStream(w http.ResponseWriter, r *http.Request) {
 	page, err := marshalPageData(r)
 	if err != nil {

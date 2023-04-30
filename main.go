@@ -80,6 +80,8 @@ func main() {
 	// multiplexer
 	mux := http.NewServeMux()
 	mux.Handle("/", checkAuth(http.HandlerFunc(latestView)))
+	mux.Handle("/checkout", checkAuth(http.HandlerFunc(checkoutView)))
+	mux.Handle("/create-payment-intent", checkAuth(http.HandlerFunc(handleCreatePaymentIntent)))
 	mux.Handle("/api/nextPage", checkAuth(http.HandlerFunc(nextPage)))
 	mux.Handle("/api/like", checkAuth(http.HandlerFunc(likePost)))
 	mux.Handle("/api/getStream", checkAuth(http.HandlerFunc(getStream)))
