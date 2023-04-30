@@ -1,6 +1,51 @@
 var stream = [];
 var cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+function setCategory(category) {
+  navLis = document.getElementsByClassName("navli");
+  for (i=0;i<navLis.length;i++) {
+    navLis[i].style.background = "#fff4e3";
+    navLis[i].style.color = "rgb(119 107 86)";
+  }
+
+  if (category == "PRODUCTS") {
+    document.getElementById("productsLi").style.background =  "rgb(119 107 86)";
+    document.getElementById("productsLi").style.color = "#fff4e3";
+  } else if (category == "QUESTIONS") {
+    document.getElementById("questionsLi").style.background = "rgb(119 107 86)";
+    document.getElementById("questionsLi").style.color = "#fff4e3";
+  } else {
+    document.getElementById("contactLi").style.background = "rgb(119 107 86)";
+    document.getElementById("contactLi").style.color = "#fff4e3";
+  }
+}
+
+// function isScrolledIntoView(elem)
+// {
+//     var docViewTop = $(window).scrollTop();
+//     var docViewBottom = docViewTop + $(window).height();
+
+//     var elemTop = $(elem).offset().top;
+//     var elemBottom = elemTop + $(elem).height();
+
+//     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+// }
+
+// define an observer instance
+var observer = new IntersectionObserver(onIntersection, {
+  root: null,   // default is the viewport
+  threshold: 0.5 // percentage of target's visible area. Triggers "onIntersection"
+})
+
+// callback is called on intersection change
+function onIntersection(){
+  nextPage();
+}
+
+function getPage(page) {
+  setCategory(page);
+}
+
 function getStream(category) {
   var xhr = new XMLHttpRequest();
 
@@ -17,6 +62,7 @@ function getStream(category) {
         document.getElementById("pageName").innerHTML = category;
         stream = JSON.parse(res.stream);
         setButtons();
+        setCategory(category);
         hideSidebar();
       } else {
         // handle error
@@ -58,6 +104,10 @@ function nextPage() {
         // listDiv.insertAdjacentHTML("beforeend", res.template);
         stream = stream.concat(JSON.parse(res.stream));
         setButtons();
+        if (res.lastPage == "true") {
+          // To stop observing:
+          observer.unobserve(document.querySelector(".footLogo"));
+        }
       } else {
         // handle error
         console.log("error");

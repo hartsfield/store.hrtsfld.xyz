@@ -4,7 +4,9 @@
     <div class="companyName" onclick="window.location.href = window.location.origin">{{.Company}}</div>
 
     <ul class="navul">
-        <li class="navli" onClick="getStream('PRODUCTS')">PRODUCTS</li>
+        <li class="navli" id="productsLi" onclick="getStream('PRODUCTS')">PRODUCTS</li>
+        <li class="navli" id="questionsLi" onclick="getPage('QUESTIONS')">QUESTIONS</li>
+        <li class="navli" id="contactLi" onclick="getPage('CONTACT')">CONTACT</li>
         {{ if .UserData.IsLoggedIn }}
         <li class="navli userLikes_{{.UserData.IsLoggedIn}}" onclick="getStream({{.UserData.Name}})">
             ♡ ♡ ♡

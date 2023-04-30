@@ -1,5 +1,15 @@
 {{ define "footer" }}
-    <div class="foot" onclick="nextPage()">
-        <div class="footLogo">{{.Company}}</div>
+    <div class="foot" id="foot" onclick="nextPage()">
+        <div class="footTag">{{.Company}}</div>
+        <div class="realFoot">
+            <div class="sym">☯</div>
+            <div class="footLogo">{{.Company}}</div>
+        </div>
     </div>
+    <script>
+// Use the observer to observe an element
+observer.observe( document.querySelector(".footLogo") )
+
+
+    </script>
 {{ end }}

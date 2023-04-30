@@ -12,7 +12,7 @@ func latestView(w http.ResponseWriter, r *http.Request) {
 	var page pageData
 	stream := getFresh(0)
 	// page.Stream = setLikes(r, ts)
-	page.Company = "TeraStream"
+	page.Company = "Terrâstreemâ"
 	page.Stream = stream
 	page.UserData = &credentials{}
 	page.PageName = "PRODUCTS"
@@ -44,7 +44,7 @@ func nextPage(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Println(err)
 	}
-	page.Company = "TeraStream"
+	page.Company = "Terrâstreemâ"
 	var stream []*post
 	if page.Category == "PRODUCTS" {
 		stream = getFresh(page.Number)
@@ -74,11 +74,17 @@ func nextPage(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 		return
 	}
+	var lastPage = "false"
+	if page.Number >= 22 {
+		lastPage = "true"
+	}
+	log.Println("tespovfdpov", page.Number, lastPage)
 	ajaxResponse(w, map[string]string{
 		"success":  "true",
 		"error":    "false",
 		"template": b.String(),
 		"stream":   string(streamText),
+		"lastPage": lastPage,
 	})
 }
 
@@ -87,7 +93,7 @@ func getStream(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Println(err)
 	}
-	page.Company = "TeraStream"
+	page.Company = "Terrâstreemâ"
 
 	var stream []*post
 	if page.Category == "PRODUCTS" {
