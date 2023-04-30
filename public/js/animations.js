@@ -24,18 +24,20 @@ function expandSidebar() {
 // Triggered by pressing the darkened background.
 function hideSidebar() {
         // hideAuth();
-        var bg = document.getElementById("bgBlur")
-        bg.style.display = "none";
-        var sb = document.getElementById("sidebar")
-        var i = 40;
-        var expand = setInterval(function() {
-                sb.style.width = i-- + "%";
-                sb.style.fontSize = i*0.025 + "em";
-                if (i >= 40) {
-                        sb.style.display = "none";
-                        clearInterval(expand);
-                }
-        }, 10);
+        var bg = document.getElementById("bgBlur");
+        if (bg.style.display != "") {
+                bg.style.display == "none";
+                var sb = document.getElementById("sidebar")
+                var i = 40;
+                var expand = setInterval(function() {
+                        sb.style.width = i-- + "%";
+                        sb.style.fontSize = i*0.025 + "em";
+                        if (i >= 40) {
+                                sb.style.display = "none";
+                                clearInterval(expand);
+                        }
+                }, 10);
+        }
 }
 
 // showAuth is used to show the signin/signup form
