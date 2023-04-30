@@ -34,7 +34,7 @@ function setCategory(category) {
 // define an observer instance
 var observer = new IntersectionObserver(onIntersection, {
   root: null,   // default is the viewport
-  threshold: 0.5 // percentage of target's visible area. Triggers "onIntersection"
+  threshold: 0.1 // percentage of target's visible area. Triggers "onIntersection"
 })
 
 // callback is called on intersection change

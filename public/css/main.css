@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@900&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -26,6 +27,7 @@ li {
 }
 
 .companyName {
+    font-family: 'MuseoModerno', cursive;
     display: inline-block;
     top: 0;
     position: absolute;
@@ -394,6 +396,7 @@ li {
     background: #f2eee6;
     box-shadow: 0px 1px 18px -8px rgb(122 69 0 / 76%);
     border-bottom: 1px solid #c79b00;
+    z-index: 43;
 }
 
 #updateDiv {
@@ -405,7 +408,9 @@ li {
 .capOuter {
     height: 20vh;
     margin: 1em;
+    margin-top: 3em;
     border-radius: 1em;
+    overflow: hidden;
 }
 
 .cap {
@@ -414,6 +419,19 @@ li {
     background-position: center;
     border-radius: 1em;
     height: 100%;
+    animation: zoom-in-zoom-out 10s ease infinite;
+}
+
+@keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.5, 1.5);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
 }
 
 
