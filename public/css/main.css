@@ -42,8 +42,8 @@ li {
 }
 
 .cartButt {
-    float: right;
-    margin-right: 1.8em;
+    /* float: right; */
+    /* margin-right: 1.2em; */
     color: white;
     background: #3eb0ce;
     border-radius: 1em;
@@ -51,6 +51,7 @@ li {
     font-size: 0.9em;
     display: none;
     cursor: pointer;
+    position: fixed;
 }
 
 .cartItem {
@@ -227,8 +228,13 @@ li {
         z-index: 200;
 }
 
+#streamOuter {
+    margin-left: 10em;
+    height: fit-content;
+    min-height: 100%;
+}
+
 .stream {
-        margin-left: 10em;
         padding-top: 5em;
 }
 
@@ -324,6 +330,9 @@ li {
 
 
 @media screen and (orientation:portrait) {
+        #updateDiv {
+            width: 100%;
+        }
         body {
                 min-width: 100%;
         }
@@ -377,14 +386,23 @@ li {
         }
         .cartButt {
             margin-top: 0.7em;
+            right: 0.8em;
         }
 
+        #streamOuter {
+    margin-left: 0;
+
+        }
 }
 
 @media screen and (orientation:landscape) {
+        #updateDiv {
+            width: 60vw;
+            max-width: 45em;
+            border-right: 1px solid #dadada;
+        }
+ 
         body {
-                width: 40%;
-                width: 40%;
                 min-width: 700px;
                 border-right: 1px solid #dedede;
         }
@@ -398,5 +416,8 @@ li {
         }
         .authButt_ {
                 margin-top: unset;
+        }
+        .cartButt {
+    left: 44em;
         }
 }

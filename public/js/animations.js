@@ -26,7 +26,7 @@ function hideSidebar() {
         // hideAuth();
         var bg = document.getElementById("bgBlur");
         if (bg.style.display != "") {
-                bg.style.display == "none";
+                bg.style.display = "none";
                 var sb = document.getElementById("sidebar")
                 var i = 40;
                 var expand = setInterval(function() {

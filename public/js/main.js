@@ -17,7 +17,7 @@ function getStream(category) {
         document.getElementById("pageName").innerHTML = category;
         stream = JSON.parse(res.stream);
         setButtons();
-        hideSidebar()
+        hideSidebar();
       } else {
         // handle error
       }
