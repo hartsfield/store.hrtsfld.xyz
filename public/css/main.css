@@ -522,6 +522,9 @@ li {
     #updateDiv {
         border-right: 0;
     }
+    .capOuter {
+        margin-top: 0;
+    }
 }
 
 @media screen and (orientation:landscape) {
