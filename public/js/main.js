@@ -282,6 +282,7 @@ function buildCartMarkup() {
   cartTotal.className = "cartTotal";
   cartTotal.id = "cartTotal";
   cartTotal.innerHTML = "Checkout: " + total;
+  cartTotal.setAttribute("onclick","checkoutPage()");
   for (i=0;i<cart.length;i++) {
     cartItem = document.createElement("div");
     cartItem.className = "cartItem";
@@ -324,6 +325,10 @@ function buildCartMarkup() {
   }
   cartDiv.appendChild(cartTotal);
   return cartDiv;
+}
+
+function checkoutPage() {
+  window.location = window.location.origin + "/checkout";
 }
 
 function updateQuantity(key) {
