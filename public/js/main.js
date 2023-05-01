@@ -4,19 +4,19 @@ var cart = JSON.parse(localStorage.getItem("cart")) || [];
 function setCategory(category) {
   navLis = document.getElementsByClassName("navli");
   for (i=0;i<navLis.length;i++) {
-    navLis[i].style.background = "#fff4e3";
-    navLis[i].style.color = "rgb(119 107 86)";
+    navLis[i].style.background = "#504429";
+    navLis[i].style.color =  "#fff4e3";
   }
 
   if (category == "PRODUCTS") {
-    document.getElementById("productsLi").style.background =  "rgb(119 107 86)";
-    document.getElementById("productsLi").style.color = "#fff4e3";
+    document.getElementById("productsLi").style.background =  "#fff4e3";
+    document.getElementById("productsLi").style.color = "rgb(118 98 67)";
   } else if (category == "QUESTIONS") {
-    document.getElementById("questionsLi").style.background = "rgb(119 107 86)";
-    document.getElementById("questionsLi").style.color = "#fff4e3";
+    document.getElementById("questionsLi").style.background = "#fff4e3";
+    document.getElementById("questionsLi").style.color ="rgb(118 98 67)";
   } else {
-    document.getElementById("contactLi").style.background = "rgb(119 107 86)";
-    document.getElementById("contactLi").style.color = "#fff4e3";
+    document.getElementById("contactLi").style.background =  "#fff4e3";
+    document.getElementById("contactLi").style.color = "rgb(118 98 67)";
   }
 }
 
@@ -44,7 +44,9 @@ function onIntersection(){
 
 function getPage(page) {
   setCategory(page);
+  window.location = window.location.origin + "/" + page;
 }
+
 
 function getStream(category) {
   var xhr = new XMLHttpRequest();
@@ -92,21 +94,23 @@ function nextPage() {
   xhr.onload = function() {
     if (xhr.status === 200) {
       var res = JSON.parse(xhr.responseText);
-      console.log(JSON.parse(res.stream));
       if (res.success == "true") {
-        var listDiv = document.getElementById("streamOuter");
-        var nextPageDiv = document.createElement("div");
-        nextPageDiv.innerHTML = res.template;
-        nextPage.id = "page_" + stream.length;
-        nextPageDiv.children[0].style.paddingTop ="0em";
-        nextPageDiv.children[0].children[0].style.paddingTop ="0em";
-        listDiv.appendChild(nextPageDiv);
-        // listDiv.insertAdjacentHTML("beforeend", res.template);
-        stream = stream.concat(JSON.parse(res.stream));
-        setButtons();
         if (res.lastPage == "true") {
           // To stop observing:
           observer.unobserve(document.querySelector(".footLogo"));
+          stream.pop();
+        } else {
+
+          var listDiv = document.getElementById("streamOuter");
+          var nextPageDiv = document.createElement("div");
+          nextPageDiv.innerHTML = res.template;
+          nextPage.id = "page_" + stream.length;
+          nextPageDiv.children[0].style.paddingTop ="0em";
+          nextPageDiv.children[0].children[0].style.paddingTop ="0em";
+          listDiv.appendChild(nextPageDiv);
+          // listDiv.insertAdjacentHTML("beforeend", res.template);
+          stream = stream.concat(JSON.parse(res.stream));
+          setButtons();
         }
       } else {
         // handle error

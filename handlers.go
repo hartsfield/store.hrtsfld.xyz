@@ -75,15 +75,17 @@ func nextPage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	var lastPage = "false"
+	streamString := string(streamText)
 	if page.Number >= 22 {
 		lastPage = "true"
+		streamString = ""
 	}
 	log.Println("tespovfdpov", page.Number, lastPage)
 	ajaxResponse(w, map[string]string{
 		"success":  "true",
 		"error":    "false",
 		"template": b.String(),
-		"stream":   string(streamText),
+		"stream":   streamString,
 		"lastPage": lastPage,
 	})
 }
@@ -95,6 +97,14 @@ func checkoutView(w http.ResponseWriter, r *http.Request) {
 	page.PageName = "CHECKOUT"
 
 	exeTmpl(w, r, &page, "checkoutMeta.tmpl")
+}
+
+func contactView(w http.ResponseWriter, r *http.Request) {
+	var page pageData
+	page.Company = "Terrâstreemâ"
+	page.UserData = &credentials{}
+	page.PageName = "CONTÂCT"
+	exeTmpl(w, r, &page, "contactMeta.tmpl")
 }
 
 func getStream(w http.ResponseWriter, r *http.Request) {

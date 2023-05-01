@@ -6,7 +6,7 @@
     <ul class="navul">
         <li class="navli" id="productsLi" onclick="getStream('PRODUCTS')">PRODUCTS</li>
         <li class="navli" id="questionsLi" onclick="getPage('QUESTIONS')">QUESTIONS</li>
-        <li class="navli" id="contactLi" onclick="getPage('CONTACT')">CONTACT</li>
+        <li class="navli" id="contactLi" onclick="getPage('CONTÂCT')">CONTÂCT</li>
         {{ if .UserData.IsLoggedIn }}
         <li class="navli userLikes_{{.UserData.IsLoggedIn}}" onclick="getStream({{.UserData.Name}})">
             ♡ ♡ ♡
@@ -15,5 +15,8 @@
       {{ end }}
     </ul>
 </div>
+    <script>
+setCategory(window.location.pathname.substring(1).toUpperCase());
+    </script>
 
 {{ end }}
