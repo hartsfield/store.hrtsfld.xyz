@@ -89,8 +89,12 @@ func nextPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func checkoutView(w http.ResponseWriter, r *http.Request) {
-	p := &pageData{}
-	exeTmpl(w, r, p, "checkoutMeta.tmpl")
+	var page pageData
+	page.Company = "Terrâstreemâ"
+	page.UserData = &credentials{}
+	page.PageName = "CHECKOUT"
+
+	exeTmpl(w, r, &page, "checkoutMeta.tmpl")
 }
 
 func getStream(w http.ResponseWriter, r *http.Request) {

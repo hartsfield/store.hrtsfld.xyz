@@ -1,14 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <html>
         {{template "head"}}                                    
-<link rel="stylesheet" href="../../public/css/checkout.css" />
-<script src="https://js.stripe.com/v3/"></script>
-<script src="../../public/js/checkout.js" defer></script>
+        <link rel="stylesheet" href="../../public/css/checkout.css" />
+        <script src="https://js.stripe.com/v3/"></script>
+        <script src="../../public/js/checkout.js" defer></script>
         <body>
-           <div id="updateDiv">
-                {{ template "checkout" . }}
-                {{template "footer" .}}
-           </div>
+                <div id="updateDiv">
+                        {{template "sidebar" .}}
+                        {{template "topbar" .}}
+                        {{template "auth" }}
+                        <div id="streamOuter">
+                                {{ template "checkout" . }}
+                        </div>
+                </div>
+                <style>
+#payment-form {
+        padding-top: 4em;
+        width: 100%
+}
+body {
+    -webkit-font-smoothing: antialiased;
+    justify-content: unset;
+    align-content: unset;
+    height: unset;
+    width: unset;
+    font-family: 'Mulish', sans-serif;
+    color: #7a7a7a;
+    background: #fffcef;
+
+}
+                </style>
         </body>
 </html>
 
