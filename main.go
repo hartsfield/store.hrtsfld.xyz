@@ -64,7 +64,7 @@ var (
 
 	// HTML templates. We use them like components and compile them
 	// together at runtime.
-	templates = template.Must(template.New("main").ParseGlob("internal/*/*.tmpl"))
+	templates = template.Must(template.New("main").ParseGlob("internal/*/*"))
 	// this context is used for the client/server connection. It's useful
 	// for passing the token/credentials around.
 	rdbctx = context.Background()
@@ -79,10 +79,12 @@ func main() {
 
 	// multiplexer
 	mux := http.NewServeMux()
-	mux.Handle("/", checkAuth(http.HandlerFunc(latestView)))
-	mux.Handle("/CONTÂCT", checkAuth(http.HandlerFunc(contactView)))
+	mux.Handle("/", checkAuth(http.HandlerFunc(getStream)))
+	// mux.Handle("/CONTÂCT", checkAuth(http.HandlerFunc(contactView)))
 	mux.Handle("/checkout", checkAuth(http.HandlerFunc(checkoutView)))
+	// mux.Handle("/success", checkAuth(http.HandlerFunc(latestView)))
 	mux.Handle("/create-payment-intent", checkAuth(http.HandlerFunc(handleCreatePaymentIntent)))
+	// mux.Handle("/create-checkout-session", checkAuth(http.HandlerFunc(createCheckoutSession)))
 	mux.Handle("/api/nextPage", checkAuth(http.HandlerFunc(nextPage)))
 	mux.Handle("/api/like", checkAuth(http.HandlerFunc(likePost)))
 	mux.Handle("/api/getStream", checkAuth(http.HandlerFunc(getStream)))

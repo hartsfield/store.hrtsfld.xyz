@@ -12,7 +12,12 @@
                         <div id="streamOuter">
                                 {{ template "checkout" . }}
                         </div>
+                        {{template "footer" .}}
                 </div>
+        <script>
+                updateCartTotal();
+        </script>
+
                 <style>
 #payment-form {
         padding-top: 4em;

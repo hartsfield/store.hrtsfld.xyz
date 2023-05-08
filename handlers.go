@@ -10,12 +10,13 @@ import (
 
 func latestView(w http.ResponseWriter, r *http.Request) {
 	var page pageData
-	stream := getFresh(0)
+	// stream := getFresh(0)
 	// page.Stream = setLikes(r, ts)
 	page.Company = "Terrâstreemâ"
-	page.Stream = stream
+	// page.Stream = stream
 	page.UserData = &credentials{}
 	page.PageName = "PRODUCTS"
+
 	exeTmpl(w, r, &page, "main.tmpl")
 }
 
@@ -44,6 +45,7 @@ func nextPage(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Println(err)
 	}
+	log.Println("pagenum: ", page.Number)
 	page.Company = "Terrâstreemâ"
 	var stream []*post
 	if page.Category == "PRODUCTS" {
@@ -61,7 +63,6 @@ func nextPage(w http.ResponseWriter, r *http.Request) {
 	}
 	// page.Stream = setLikes(r, stream)
 	page.Stream = stream
-	log.Println(stream, "stream")
 	page.UserData = &credentials{}
 
 	var b bytes.Buffer
@@ -91,6 +92,9 @@ func nextPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func checkoutView(w http.ResponseWriter, r *http.Request) {
+	// verify basket and update database
+        
+
 	var page pageData
 	page.Company = "Terrâstreemâ"
 	page.UserData = &credentials{}
@@ -99,12 +103,34 @@ func checkoutView(w http.ResponseWriter, r *http.Request) {
 	exeTmpl(w, r, &page, "checkoutMeta.tmpl")
 }
 
+// func checkout2View(w http.ResponseWriter, r *http.Request) {
+// 	var page pageData
+// 	page.Company = "Terrâstreemâ"
+// 	page.UserData = &credentials{}
+// 	page.PageName = "CHECKOUT"
+
+// 	exeTmpl(w, r, &page, "checkout2Meta.tmpl")
+// }
+
 func contactView(w http.ResponseWriter, r *http.Request) {
 	var page pageData
 	page.Company = "Terrâstreemâ"
 	page.UserData = &credentials{}
 	page.PageName = "CONTÂCT"
-	exeTmpl(w, r, &page, "contactMeta.tmpl")
+	page.Category = "CONTÂCT"
+	var b bytes.Buffer
+	err := templates.ExecuteTemplate(&b, "contactMeta.tmpl", page)
+	if err != nil {
+		fmt.Println(err)
+	}
+	ajaxResponse(w, map[string]string{
+		"success":  "true",
+		"error":    "false",
+		"stream":   "[]",
+		"template": b.String(),
+	})
+
+	// exeTmpl(w, r, &page, "contactMeta.tmpl")
 }
 
 func getStream(w http.ResponseWriter, r *http.Request) {
@@ -114,19 +140,21 @@ func getStream(w http.ResponseWriter, r *http.Request) {
 	}
 	page.Company = "Terrâstreemâ"
 
+	log.Println(page.Category)
 	var stream []*post
+	var b bytes.Buffer
 	if page.Category == "PRODUCTS" {
 		stream = getFresh(0)
 		page.PageName = "PRODUCTS"
-	} else if page.Category == "HOT" {
-		stream = getHot()
-		page.PageName = "HOTTEST POSTS"
-	} else if page.Category == "STREAM" {
-		// Get users followed tags stream
-		// TODO
+	} else if page.Category == "CONTÂCT" {
+		contactView(w, r)
+		return
+	} else if page.Category == "CART" {
+		contactView(w, r)
+		return
 	} else {
-		// stream = setLikes(r, getLikes(r, page.Category))
-		// page.PageName = page.Category + "'s Liked Posts"
+		latestView(w, r)
+		return
 	}
 	// page.Stream = setLikes(r, stream)
 	page.Stream = stream
@@ -139,7 +167,6 @@ func getStream(w http.ResponseWriter, r *http.Request) {
 		page.UserData = &credentials{}
 	}
 
-	var b bytes.Buffer
 	err = templates.ExecuteTemplate(&b, "updatePage.tmpl", page)
 	if err != nil {
 		fmt.Println(err)

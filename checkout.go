@@ -7,20 +7,36 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 
 	"github.com/stripe/stripe-go/v74"
+	"github.com/stripe/stripe-go/v74/checkout/session"
 	"github.com/stripe/stripe-go/v74/paymentintent"
 )
 
 type item struct {
-	id string
+	ID string `json:"ID"`
 }
 
-func calculateOrderAmount(items []item) int64 {
+func calculateOrderAmount(items []item) (total int64) {
 	// Replace this constant with a calculation of the order's amount
 	// Calculate the order total on the server to prevent
 	// people from directly manipulating the amount on the client
-	return 1400
+	log.Println(items)
+	for _, item := range items {
+		log.Println(item)
+		price, err := rdb.HGet(rdbctx, item.ID, "Price").Result()
+		if err != nil {
+			log.Println(err)
+		}
+		log.Println(price)
+		next, err := strconv.ParseFloat(price[1:], 64)
+		if err != nil {
+			panic(err)
+		}
+		total = total + int64(next*100.00)
+	}
+	return
 }
 
 func handleCreatePaymentIntent(w http.ResponseWriter, r *http.Request) {
@@ -32,7 +48,7 @@ func handleCreatePaymentIntent(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var req struct {
-		Items []item `json:"items"`
+		Items []item `json:"cart"`
 	}
 
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
@@ -78,4 +94,34 @@ func writeJSON(w http.ResponseWriter, v interface{}) {
 		log.Printf("io.Copy: %v", err)
 		return
 	}
+}
+
+func createCheckoutSession(w http.ResponseWriter, r *http.Request) {
+	log.Println("ccs")
+	domain := "http://localhost:8667"
+	params := &stripe.CheckoutSessionParams{
+		Mode: stripe.String(string(stripe.CheckoutSessionModePayment)),
+		LineItems: []*stripe.CheckoutSessionLineItemParams{
+			&stripe.CheckoutSessionLineItemParams{
+				PriceData: &stripe.CheckoutSessionLineItemPriceDataParams{
+					Currency: stripe.String("usd"),
+					ProductData: &stripe.CheckoutSessionLineItemPriceDataProductDataParams{
+						Name: stripe.String("T-shirt"),
+					},
+					UnitAmount: stripe.Int64(2000),
+				},
+				Quantity: stripe.Int64(1),
+			},
+		},
+		SuccessURL: stripe.String(domain + "/success.html"),
+		CancelURL:  stripe.String(domain + "/cancel"),
+	}
+
+	s, err := session.New(params)
+
+	if err != nil {
+		log.Printf("session.New: %v", err)
+	}
+
+	http.Redirect(w, r, s.URL, http.StatusSeeOther)
 }

@@ -2,25 +2,20 @@
 <html>
         {{template "head"}}                                    
         <body>
-           <div id="updateDiv">
-                {{template "sidebar" .}}
-                {{template "topbar" .}}
-                {{template "auth" }}
-                <div id="streamOuter">
-                        {{template "stream" .}}
+                <div id="updateDiv">
+                        {{template "sidebar" .}}
+                        {{template "topbar" .}}
+                        {{template "auth" }}
+                        <div id="streamOuter">
+                                {{template "stream" .}}
+                        </div>
+                        {{template "footer" .}}
                 </div>
-                {{template "footer" .}}
-           </div>
-   <script>
-// Use the observer to observe an element
- window.onload = function(){
-      console.log("test")
-observer.observe( document.querySelector(".footLogo") )
-    };
+                <script>
+                        getStream("PRODUCTS");
+    observer.observe( document.querySelector(".footLogo"));
 
-
-    </script>
-
+                </script>
 
         </body>
 </html>

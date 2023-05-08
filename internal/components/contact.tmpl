@@ -1,5 +1,5 @@
 {{define "contact"}}
-    <div class="contactOuter">
+    <div class="contactOuter stream">
         <div class="contactTop">Terrâstreemâ</div>
         <div class="contactMain">
             Terrâstreemâ ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <img src="../../public/assets/images/higgs.jpg"/>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exe
@@ -8,7 +8,7 @@
     </div>
     <style>
 .contactOuter {
-    font-family: 'Times New Roman';
+        font-family:  "Times";
     padding: 1em;
     padding-top: 4em;
 }
@@ -33,5 +33,12 @@
     font-size: 2em;
     font-weight: bold;
 }
+@media screen and (orientation:portrait) {
+    .contactMain {
+        font-size: 0.674em;
+
+    }
+}
     </style>
+
 {{end}}

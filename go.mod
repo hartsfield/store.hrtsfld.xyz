@@ -6,6 +6,7 @@ require (
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/hartsfield/ohsheet v0.0.0-20230208162951-3066d27659f5
+	github.com/stripe/stripe-go v70.15.0+incompatible
 	github.com/stripe/stripe-go/v74 v74.16.0
 	golang.org/x/crypto v0.5.0
 )
