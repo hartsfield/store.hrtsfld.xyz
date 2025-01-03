@@ -58,7 +58,7 @@ var (
 	rdb     = redis.NewClient(&redis.Options{
 		Addr:     redisIP + ":6379",
 		Password: "",
-		DB:       0,
+		DB:       5,
 	})
 
 	// HTML templates. We use them like components and compile them
