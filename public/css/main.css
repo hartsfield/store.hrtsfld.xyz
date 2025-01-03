@@ -413,8 +413,7 @@ li {
 
 .capOuter {
     height: 20vh;
-    margin: 1em;
-    margin-top: 3em;
+    margin: 0 1em 1em 1em;
     border-radius: 1em;
     overflow: hidden;
 }
