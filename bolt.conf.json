@@ -1,0 +1,22 @@
+{
+    "app": {
+        "name": "Terastreema",
+        "command": "store.hrtsfld.xyz",
+        "domain_name": "store.hrtsfld.xyz",
+        "port": "9925",
+        "tls_enabled": true,
+        "alertsOn": true,
+        "env": {"logFilePath": "./log.txt"},
+        "version": "0.1",
+        "repo": "https://github.com/hartsfield/store.hrtsfld.xyz"
+    },
+    "gcloud": {
+        "command": "gcloud",
+        "zone": "us-central1-a",
+        "project": "mysterygift",
+        "proxy_home": "/home/john/bp/",
+        "livedir": "/home/john/live/",
+        "user": "john",
+        "instance": "main"
+    }
+}
