@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"html/template"
 	"log"
-	"math/rand"
 	"net/http"
 	"os"
 	"time"
@@ -71,8 +70,6 @@ var (
 )
 
 func main() {
-	// for generating IDs
-	rand.Seed(time.Now().UTC().UnixNano())
 
 	// Tells 'log' to log the line number
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
@@ -97,7 +94,7 @@ func main() {
 	// Server configuration
 	srv := &http.Server{
 		// in production only use SSL
-		Addr:              ":8667",
+		Addr:              ":9925",
 		Handler:           mux,
 		ReadHeaderTimeout: 5 * time.Second,
 		WriteTimeout:      10 * time.Second,
